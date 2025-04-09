@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lgy.board.DAO.BoardDAO">
+
+    <select id="list" resultType="com.lgy.board.BoardDTO">
+        select B_id, B_NAME, B_TITLE, B_CONTENT, B_DATE, B_HIT from board
+    </select>
+    
+    <insert id="write">
+    	insert into tbl_board(B_NAME, B_TITLE, B_CONTENT) values(#{B_NAME},#{B_TITLE},#{B_CONTENT})
+    </insert>
+    
+    <select id="contentView" resultType="com.lgy.board.BoardDTO">
+        select B_id, B_NAME, B_TITLE, B_CONTENT, B_DATE, B_HIT 
+          from board 
+         wherXe B_id=#{B_id}
+    </select>
+
+    <update id="modify">
+    	update board set B_NAME=#{B_NAME}, B_TITLE=#{B_TITLE}, B_CONTENT=#{B_CONTENT} where B_id=#{B_id}
+    </update>
+
+   <update id="delete">
+    	delete from board where B_id=#{B_id}
+    </update>
+    
+</mapper>
+
+
+
